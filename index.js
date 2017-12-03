@@ -14,7 +14,8 @@ const targets = {
 module.exports = function(source) {
   const callback = this.async();
   const srcDir = path.dirname(path.dirname(this.resourcePath));
-  const packageName = toml.parse(fs.readFileSync(path.join(srcDir, 'Cargo.toml'), 'utf8').toString()).bin.name;
+  console.log("srcDir: " + srcDir + "\n");
+  const packageName = "IOTA";
 
   const opts = loaderUtils.getOptions(this);
   const release = opts ? opts.release : false;
