@@ -27,10 +27,12 @@ module.exports = function(source) {
   const outDir = path.join(srcDir, 'target', rustTarget, (release ? 'release' : 'debug'));
   const outFile = path.join(outDir, `${packageName}.js`);
   const cmd = `cargo build --target=${rustTarget}${release ? ' --release' : ''}`;
+  console.log(`cmd: ${cmd}`);
 
   const self = this;
   child_process.exec(cmd, { cwd: this.context }, function(error, stdout, stderr) {
     if (error) { return callback(error, null); }
+    console.log(`cmd: ${cmd} out: ${ stdout } ${stderr}`);
 
     const out = fs.readFileSync(outFile, 'utf8');
 
