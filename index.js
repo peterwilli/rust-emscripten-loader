@@ -14,7 +14,7 @@ const targets = {
 module.exports = function(source) {
   const callback = this.async();
   const srcDir = path.dirname(path.dirname(this.resourcePath));
-  const packageName = toml.parse(fs.readFileSync(path.join(srcDir, 'Cargo.toml'), 'utf8').toString()).package.name;
+  const packageName = toml.parse(fs.readFileSync(path.join(srcDir, 'Cargo.toml'), 'utf8').toString()).bin.name;
 
   const opts = loaderUtils.getOptions(this);
   const release = opts ? opts.release : false;
